@@ -1,0 +1,34 @@
+<center><select class="browser-default model" id="selectProject">
+    </select></center>
+
+<a class="waves-effect waves-light btn" id="gerar"><i class="material-icons right">file_download</i>Gerar Relatório</a>
+
+<div class="options"><a class="link">Usar data específica</a> <br /><br />
+    <div class="dates">
+        <label>De:&nbsp;&nbsp;</label>
+        <input type="date" id="de" class="validate" />
+        <br />
+        <label>Até:</label>
+        <input type="date" id="ate" class="validate" />
+    </div>
+</div>
+
+<script>
+    fs.readFile('store.json', 'utf8', function (err, contents) {
+        JSON.parse(contents).projects.forEach((item) => {
+            $('.model').append(`<option value="${item.identifier}">${item.name}</option>`)
+        })
+    })
+
+    $('#gerar').click(() => {
+        const de = $('#de').val()
+        const ate = $('#ate').val()
+        const project = $('select').val()
+        require('./scripts/relatorio/run.js')(de, ate, project)
+        $('.loading').css('display', 'flex')
+    })
+
+    $('.link').click(() => {
+        $('.dates').fadeIn(950)
+    })
+</script>

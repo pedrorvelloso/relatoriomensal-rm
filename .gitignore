@@ -1,0 +1,12 @@
+# Node modules
+node_modules
+
+# Igonore Build
+relatoriomensal*
+
+# dotenv
+.env
+
+# Files
+relatorio.html
+store.json

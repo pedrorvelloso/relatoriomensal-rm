@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Relatório Mensal</title>
+	<link rel="stylesheet" href="./main.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+	<div class="loading">
+		<div class="load"><img src="load.svg" alt="carregando" />
+			<div class="loadText">Carregando...</div>
+		</div>
+	</div>
+	<div id="background">
+		<div class="content">
+			<h2 class="appTitle">Relatório Mensal Unb-DPU</h2>
+
+			<div class="page"></div>
+
+		</div>
+
+		<footer>Desenvolvido por Pedro Reis Velloso do Santos | v2.0</footer>
+	</div>
+
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+	<script>
+		require('./renderer.js')
+		const $ = require('jquery')
+		const { getProjects, loadPage } = require('./scripts/utils.js')
+		const fs = require('fs')
+		document.body.style.backgroundImage = `url(${process.env.BACKGROUND || 'image.jpg'})`
+		$('.appTitle').html(process.env.TITLE)
+
+		loadPage('login')
+
+	</script>
+</body>
+
+</html>

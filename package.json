@@ -1,0 +1,27 @@
+{
+  "name": "relatorio-mensal",
+  "version": "2.0.0",
+  "description": "Relatorio mensal",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "linux": "./node_modules/.bin/electron-packager . relatoriomensal --platform=linux --arch=x64 --executable-name=Relatorio/Mensal",
+    "win": "./node_modules/.bin/electron-packager . relatoriomensal --platform=win32 --executable-name=Relatorio/Mensal"
+  },
+  "repository": "",
+  "keywords": [],
+  "author": "Pedro Reis",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "2.0.8",
+    "electron-packager": "^12.2.0",
+    "eslint": "^5.8.0"
+  },
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "isomorphic-fetch": "^2.2.1",
+    "jquery": "^3.3.1",
+    "opn": "^5.3.0",
+    "pubsub-js": "^1.6.1"
+  }
+}

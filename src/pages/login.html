@@ -1,0 +1,58 @@
+<form id="formLogin">
+    <div class="error"></div>
+    <div class="input-field">
+        <input placeholder="Login" id="user" type="text" class="validate">
+    </div>
+    <div class="input-field">
+        <input placeholder="Senha" id="pass" type="password" class="validate">
+    </div>
+    <button class="waves-effect waves-light btn" id="logar" type="submit"><i class="material-icons right">file_download</i>Login</button>
+</form>
+
+<script>
+    $('#formLogin').submit(e => {
+        const userInfo = verificaCampos()
+
+        if (userInfo !== null) {
+            $('.loading').css('display', 'flex')
+            login(userInfo.user, userInfo.pass)
+        }
+        e.preventDefault()
+    })
+
+    function login(user, pass) {
+        $.ajax({
+            url: `${process.env.REDMINE_URL}/users/current.json`,
+            type: 'GET',
+            dataType: 'json',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(user + ':' + pass))
+            },
+            success: (response) => {
+                const store = { apiKey: response.user.api_key, projects: [] }
+                getProjects(store.apiKey).then(res => {
+                    const projects = res.projects
+                    const pop = projects.pop()
+                    store.projects = projects
+                    fs.writeFileSync('store.json', JSON.stringify(store))
+                    loadPage('gerar')
+                })
+            },
+            error: (error) => {
+                $('.error').html('Erro ao fazer login!')
+            },
+        })
+    }
+
+    function verificaCampos() {
+        const user = $('#user').val()
+        const pass = $('#pass').val()
+
+        if (user === '' || pass === '') {
+            $('.error').html('Preencha o campo de Login e Senha corretamente!')
+            return null
+        }
+
+        return { user, pass }
+    }
+</script>
