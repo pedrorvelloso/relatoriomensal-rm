@@ -18,7 +18,7 @@ function createWindow() {
 		}
 	})
 	mainWindow.loadFile('./src/index.html')
-	mainWindow.webContents.openDevTools()
+	//mainWindow.webContents.openDevTools()
 	mainWindow.setMenu(null)
 
 	mainWindow.on('closed', function () {
