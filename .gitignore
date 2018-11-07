@@ -7,6 +7,9 @@ relatoriomensal*
 # dotenv
 .env
 
+# config file
+config.js
+
 # Files
 relatorio.html
 store.json

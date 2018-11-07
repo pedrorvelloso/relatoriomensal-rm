@@ -14,21 +14,5 @@
 </div>
 
 <script>
-    fs.readFile('store.json', 'utf8', function (err, contents) {
-        JSON.parse(contents).projects.forEach((item) => {
-            $('.model').append(`<option value="${item.identifier}">${item.name}</option>`)
-        })
-    })
-
-    $('#gerar').click(() => {
-        const de = $('#de').val()
-        const ate = $('#ate').val()
-        const project = $('select').val()
-        require('./scripts/relatorio/run.js')(de, ate, project)
-        $('.loading').css('display', 'flex')
-    })
-
-    $('.link').click(() => {
-        $('.dates').fadeIn(950)
-    })
+    require('./scripts/pages/gerar.js')
 </script>

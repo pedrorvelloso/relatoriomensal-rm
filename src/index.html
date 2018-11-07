@@ -32,10 +32,7 @@
 	<script>
 		require('./renderer.js')
 		const $ = require('jquery')
-		const { getProjects, loadPage } = require('./scripts/utils.js')
-		const fs = require('fs')
-		document.body.style.backgroundImage = `url(${process.env.BACKGROUND || 'image.jpg'})`
-		$('.appTitle').html(process.env.TITLE)
+		const { loadPage } = require('./scripts/utils.js')
 
 		loadPage('login')
 

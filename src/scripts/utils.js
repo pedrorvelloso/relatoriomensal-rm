@@ -1,3 +1,5 @@
+'use strict'
+const { redmineUrl } = require('../config.js')
 module.exports = {
 	loadPage: (page) => {
 		$.ajax({
@@ -15,7 +17,7 @@ module.exports = {
 	},
 	getProjects: (apiKey) => {
 		return $.ajax({
-			url: `${process.env.REDMINE_URL}/projects.json?limit=100`,
+			url: `${redmineUrl}/projects.json?limit=100`,
 			type: 'GET',
 			dataType: 'json',
 			beforeSend: function (xhr) {

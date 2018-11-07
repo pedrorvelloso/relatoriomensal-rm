@@ -1,11 +1,13 @@
+'use strict'
 require('isomorphic-fetch')
 const { objectToQueryString, getStoredUser } = require('./util')
+const { redmineUrl } = require('../../config.js')
 
 class RedmineREST {
 
 	constructor() {
 		this.API_KEY = getStoredUser()
-		this.RM_URL = process.env.REDMINE_URL
+		this.RM_URL = redmineUrl
 		this.requestInfo = {}
 		this.setRequestInfo()
 	}
