@@ -1,4 +1,3 @@
-require('dotenv').config()
 const { app, BrowserWindow } = require('electron')
 var fs = require('fs')
 
@@ -9,7 +8,6 @@ function createWindow() {
 		width: 800, 
 		height: 600, 
 		resizable: false,
-		icon: `${__dirname}/favicon.ico`,
 	})
 	fs.writeFile('store.json', '{}', function (err) {
 		if (err) {

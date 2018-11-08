@@ -5,8 +5,9 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "linux": "./node_modules/.bin/electron-packager . relatoriomensal --platform=linux --arch=x64 --executable-name=Relatorio/Mensal",
-    "win": "./node_modules/.bin/electron-packager . relatoriomensal --platform=win32 --executable-name=Relatorio/Mensal"
+    "clean": "rm -f store.json && rm -f relatorio.html",
+    "linux": "npm run clean && ./node_modules/.bin/electron-packager . relatoriomensal --overwrite --platform=linux --arch=x64 --prune=true --out=release-builds",
+    "win": "npm run clean && ./node_modules/.bin/electron-packager . relatoriomensal --overwrite --platform=win32 --prune=true --out=release-builds"
   },
   "repository": "",
   "keywords": [],
@@ -18,7 +19,6 @@
     "eslint": "^5.8.0"
   },
   "dependencies": {
-    "dotenv": "^6.1.0",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.3.1",
     "opn": "^5.3.0",

@@ -3,6 +3,7 @@ node_modules
 
 # Igonore Build
 relatoriomensal*
+release-builds
 
 # dotenv
 .env
